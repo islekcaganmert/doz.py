@@ -21,7 +21,7 @@ def convert(args: list[str]) -> str:
     }[cmd](num))
 
 print('doz (Dozenal) & fdz (Floating-point Dozenal)')
-print('for Python 3.↋+')
+print('for Python 3.E+')
 print('Copyright (c) 1209 (decimal: 2025) Cagan Mert ISLEK')
 print('''
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR

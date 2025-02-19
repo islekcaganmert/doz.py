@@ -1,32 +1,4 @@
-def from_str(value: str) -> list:
-    ret = []
-    it = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '↋']
-    for i in value:
-        if i not in it:
-            raise ValueError("invalid literal for 'doz': '" + value + "'")
-        ret += [it.index(i)]
-    return ret
-
-
-def from_int(value: int) -> list:
-    bases = [1]
-    while bases[0] < value:
-        bases = [bases[0] * 12] + bases
-    ret = []
-    for i in bases:
-        ret += [value // i]
-        value = value % i
-    while ret[0] == 0:
-        ret.pop(0)
-    return ret
-
-
-def doz_repr(val: list[int]) -> str:
-    it = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '↋']
-    ret = ''
-    for i in val:
-        ret += it[i]
-    return ret
+from doz.helpers import from_int, from_str, doz_repr
 
 
 class doz:
@@ -63,62 +35,62 @@ class doz:
     def __float__(self) -> float:
         return float(int(self))
 
-    def __add__(self, other):
+    def __add__(self, other) -> 'doz':
         if hasattr(other, '__int__'):
             return doz(int(self) + int(other))
         raise TypeError("unsupported operand type(s) for +")
 
-    def __sub__(self, other):
+    def __sub__(self, other) -> 'doz':
         if hasattr(other, '__int__'):
             return doz(int(self) - int(other))
         raise TypeError("unsupported operand type(s) for -")
 
-    def __mul__(self, other):
+    def __mul__(self, other) -> 'doz':
         if hasattr(other, '__int__'):
             return doz(int(self) * int(other))
         raise TypeError("unsupported operand type(s) for *")
 
-    def __floordiv__(self, other):
+    def __floordiv__(self, other) -> 'doz':
         if hasattr(other, '__int__'):
             return doz(int(self) // int(other))
         raise TypeError("unsupported operand type(s) for //")
 
-    def __mod__(self, other):
+    def __mod__(self, other) -> 'doz':
         if hasattr(other, '__int__'):
             return doz(int(self) % int(other))
         raise TypeError("unsupported operand type(s) for %")
 
-    def __pow__(self, other):
+    def __pow__(self, other) -> 'doz':
         if hasattr(other, '__int__'):
             return doz(int(self) ** int(other))
         raise TypeError("unsupported operand type(s) for **")
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         if hasattr(other, '__int__'):
             return int(self) == int(other)
         raise TypeError("unsupported operand type(s) for ==")
 
-    def __lt__(self, other):
+    def __lt__(self, other) -> bool:
         if hasattr(other, '__int__'):
             return int(self) < int(other)
         raise TypeError("unsupported operand type(s) for <")
 
-    def __le__(self, other):
+    def __le__(self, other) -> bool:
         if hasattr(other, '__int__'):
             return int(self) <= int(other)
         raise TypeError("unsupported operand type(s) for <=")
 
-    def __gt__(self, other):
+    def __gt__(self, other) -> bool:
         if hasattr(other, '__int__'):
             return int(self) > int(other)
         raise TypeError("unsupported operand type(s) for >")
 
-    def __ge__(self, other):
+    def __ge__(self, other) -> bool:
         if hasattr(other, '__int__'):
             return int(self) >= int(other)
         raise TypeError("unsupported operand type(s) for >=")
 
-    def __ne__(self, other):
+    def __ne__(self, other) -> bool:
         if hasattr(other, '__int__'):
             return int(self) != int(other)
         raise TypeError("unsupported operand type(s) for !=")

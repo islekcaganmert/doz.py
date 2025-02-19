@@ -1,4 +1,4 @@
-from doz.doz import doz_repr, from_str, from_int
+from doz.helpers import from_int, from_str, doz_repr
 from fractions import Fraction
 
 
@@ -53,62 +53,62 @@ class fdz:
     def __int__(self) -> int:
         return int(float(self))
     
-    def __add__(self, other):
+    def __add__(self, other) -> 'fdz':
         if hasattr(other, '__float__'):
             return fdz(float(self) + float(other))
         raise TypeError("unsupported operand type(s) for +")
     
-    def __sub__(self, other):
+    def __sub__(self, other) -> 'fdz':
         if hasattr(other, '__float__'):
             return fdz(float(self) - float(other))
         raise TypeError("unsupported operand type(s) for -")
     
-    def __mul__(self, other):
+    def __mul__(self, other) -> 'fdz':
         if hasattr(other, '__float__'):
             return fdz(float(self) * float(other))
         raise TypeError("unsupported operand type(s) for *")
     
-    def __floordiv__(self, other):
+    def __floordiv__(self, other) -> 'fdz':
         if hasattr(other, '__float__'):
             return fdz(float(self) // float(other))
         raise TypeError("unsupported operand type(s) for //")
     
-    def __mod__(self, other):
+    def __mod__(self, other) -> 'fdz':
         if hasattr(other, '__float__'):
             return fdz(float(self) % float(other))
         raise TypeError("unsupported operand type(s) for %")
     
-    def __pow__(self, other):
+    def __pow__(self, other) -> 'fdz':
         if hasattr(other, '__float__'):
             return fdz(float(self) ** float(other))
         raise TypeError("unsupported operand type(s) for **")
     
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         if hasattr(other, '__float__'):
             return float(self) == float(other)
         raise TypeError("unsupported operand type(s) for ==")
     
-    def __lt__(self, other):
+    def __lt__(self, other) -> bool:
         if hasattr(other, '__float__'):
             return float(self) < float(other)
         raise TypeError("unsupported operand type(s) for <")
     
-    def __le__(self, other):
+    def __le__(self, other) -> bool:
         if hasattr(other, '__float__'):
             return float(self) <= float(other)
         raise TypeError("unsupported operand type(s) for <=")
     
-    def __gt__(self, other):
+    def __gt__(self, other) -> bool:
         if hasattr(other, '__float__'):
             return float(self) > float(other)
         raise TypeError("unsupported operand type(s) for >")
     
-    def __ge__(self, other):
+    def __ge__(self, other) -> bool:
         if hasattr(other, '__float__'):
             return float(self) >= float(other)
         raise TypeError("unsupported operand type(s) for >=")
     
-    def __ne__(self, other):
+    def __ne__(self, other) -> bool:
         if hasattr(other, '__float__'):
             return float(self) != float(other)
         raise TypeError("unsupported operand type(s) for !=")
